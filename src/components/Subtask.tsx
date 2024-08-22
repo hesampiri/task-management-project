@@ -31,7 +31,8 @@ export function Subtask({ name, colIndex, taskTitle }: subProps) {
         padding: 1,
         marginBlock: 0.5,
       }}
-      className={theme == 'dark' ? '!bg-gray-700 !text-white':'bg-white'}>
+      className={theme == "dark" ? "!bg-gray-700 !text-white" : "bg-white"}
+    >
       <Checkbox
         onChange={() => dispatch(subtaskchange({ colIndex, taskTitle, name }))}
         checked={checked}

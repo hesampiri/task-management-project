@@ -7,6 +7,7 @@ import { Option } from "@mui/joy";
 import { Box } from "@mui/material";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
+import Options from './options'
 
 type Subtask = {
   title: string;
@@ -63,9 +64,9 @@ export default function Task({ name, subtasks, colIndex }: taskProp) {
           className={theme == 'dark' ? '!bg-gray-800 !text-white':'bg-white'}>
           <Box sx={{ borderRadius: 5 }}>
             <form action="">
-              <div className="flex">
+              <div className="flex items-center justify-between">
                 <h1 className="capitalize text-md font-bold">{name}</h1>
-                <button></button>
+                <Options name="task" colIndex={colIndex} taskTitle={task?.title}/>
               </div>
               <div className="my-2">
                 <p className="text-gray-500">{task?.description}</p>

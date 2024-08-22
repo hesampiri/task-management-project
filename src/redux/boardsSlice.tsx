@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "./store";
 import data from "../data.json";
 
-
 const boardsSlice = createSlice({
   name: "boards",
   initialState: data.boards,
@@ -38,6 +37,13 @@ const boardsSlice = createSlice({
       }
     },
 
+    deleteBoard: (state) => {
+      const board = state.find((board) => board.isActive);
+      if (board) {
+        state.splice(state.indexOf(board),1);
+      }
+    },
+
     addTask: (state, action) => {
       const columnName = action.payload.selectedColumn;
       const taskName = action.payload.taskName;
@@ -52,6 +58,14 @@ const boardsSlice = createSlice({
       const board = state.find((board) => board.isActive === true);
       const col = board?.columns?.find((col) => col.name === columnName);
       col?.tasks.push(task);
+    },
+
+    deleteTask:(state ,action)=>{
+      const payload = action.payload;
+      const board = state.find((board) => board.isActive);
+      const col = board?.columns.find((_col, i) => i === payload.colIndex);
+      if(col?.tasks)
+      col.tasks = col?.tasks.filter((task) => task.title !== payload.taskTitle);
     },
 
     subtaskchange: (state, action) => {
@@ -73,6 +87,8 @@ export const {
   setBoardActive,
   addTask,
   subtaskchange,
+  deleteBoard,
+  deleteTask,
 } = boardsSlice.actions;
 
 export const selectBoard = (state: RootState) => state.boards;
