@@ -27,16 +27,6 @@ type Column = {
   tasks: Task[];
 };
 
-// type BoardType = {
-//   name : string
-//   isActive : boolean
-//   columns?:Column[]
-// }
-
-// type stateType = {
-//   boards:BoardType[]
-// }
-
 type tempType = Column[];
 
 type propType = {
@@ -46,10 +36,10 @@ type propType = {
 export default function AddEditBoard({ type }: propType) {
   const [open, setOpen] = React.useState<boolean>(false);
   const [boardInput, setboardInput] = useState<string | undefined>("");
-  const [themeclass , setthemeclass] = useState('bg-sky-100')
+  const [themeclass, setthemeclass] = useState("bg-sky-100");
 
   const boardsList = useSelector((state: RootState) => state.boards);
-  const theme = useSelector((state:RootState) => state.theme)
+  const theme = useSelector((state: RootState) => state.theme);
   const board = boardsList.find((board) => board.isActive === true);
 
   const dispatch = useDispatch();
@@ -99,13 +89,13 @@ export default function AddEditBoard({ type }: propType) {
     }
   }
 
-  useEffect(()=>{
-    if(theme == 'dark'){
-      setthemeclass('bg-gray-800')
-    }else{
-      setthemeclass('bg-sky-100')
+  useEffect(() => {
+    if (theme == "dark") {
+      setthemeclass("bg-gray-800");
+    } else {
+      setthemeclass("bg-sky-100");
     }
-  } )
+  });
 
   return (
     <React.Fragment>
@@ -139,9 +129,10 @@ export default function AddEditBoard({ type }: propType) {
             p: 3,
             boxShadow: "lg",
             outline: "none",
-            border:"none"
+            border: "none",
           }}
-          className={theme == 'dark' ? '!bg-gray-800 !text-white':'bg-white'} >
+          className={theme == "dark" ? "!bg-gray-800 !text-white" : "bg-white"}
+        >
           <h1 className="capitalize">
             {type == "edit" ? "edit borad" : "create  board"}
           </h1>
@@ -149,8 +140,9 @@ export default function AddEditBoard({ type }: propType) {
           <Input
             value={boardInput}
             onChange={(e) => setboardInput(e.target.value)}
+            autoFocus
             required
-          />
+            />
           <label htmlFor="">Borad Columns</label>
           {tempColumns?.map((col, idx) => {
             return (

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Board } from "./components/Board";
 import { RootState } from "./redux/store";
-import NewBoardModal from "./modals/newBoardModal";
+import {NewBoardModal} from "./modals/newBoardModal";
 import { useEffect } from "react";
 import { setBoardActive } from "./redux/boardsSlice";
 function App() {

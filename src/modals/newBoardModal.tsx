@@ -14,7 +14,7 @@ type inputType = {
 
 type inputListType = inputType[];
 
-export default function NewBoardModal() {
+export function NewBoardModal() {
 
   const dispatch = useDispatch();
 
@@ -63,7 +63,7 @@ export default function NewBoardModal() {
         >
           <h1>create Board</h1>
           <label htmlFor="">Board Name</label>
-          <Input value={name} onChange={(e)=>setname(e.target.value)} />
+          <Input value={name} onChange={(e)=>setname(e.target.value)}/>
           <label htmlFor="">Board Columns</label>
           {inputList.map((input) => {
             return (
