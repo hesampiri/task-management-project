@@ -21,13 +21,13 @@ export function Board({ name }: BoardType) {
       }
     >
       <NavBar name={name} />
-      <div className="flex lg:h-screen h-auto">
+      <div className="flex md:h-screen h-auto">
         <SideBar />
         <div
           className={
             theme == "dark"
-              ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 p-3 bg-gray-900 w-full"
-              : "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 p-3 bg-blue-50 w-full"
+              ? "grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 p-3 bg-gray-900 w-full"
+              : "grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 p-3 bg-blue-50 w-full"
           }
         >
           {columns?.length

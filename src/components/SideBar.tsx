@@ -29,7 +29,6 @@ export default function SideBar() {
           <h1>{board.name}</h1>
         </div>
       ))}
-      {/* <NewBoardModal/> */}
       <AddEditBoard type={""} />
     </div>
   );

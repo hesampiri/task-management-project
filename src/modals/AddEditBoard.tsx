@@ -101,10 +101,10 @@ export default function AddEditBoard({ type }: propType) {
     <React.Fragment>
       {type == "edit" ? (
         <div
-          className={`${themeclass} hover:shadow-md rounded flex justify-center items-center cursor-pointer col-span-1 h-[100px] sm:h-full mx-3 `}
+          className={`${themeclass} hover:shadow-md rounded flex justify-center items-center cursor-pointer col-span-1 h-dvh md:h-full mx-3 text-center `}
           onClick={() => setOpen(true)}
         >
-          <p className="text-xl font-semibold text-gray-500">+ New Column</p>
+          <p className=" sm:text-xl font-semibold text-gray-500 ">+ New Column</p>
         </div>
       ) : (
         <div

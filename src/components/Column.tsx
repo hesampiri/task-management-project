@@ -13,8 +13,11 @@ export function Column({ colIndex }: columnProp) {
   const tasks = col?.tasks;
 
   return (
-    <div className=" p-3">
-      <h2 className="tracking-widest text-gray-500 capitalize">{col?.name}{`(${tasks?.length})`}</h2>
+    <div className="p-3">
+      <h2 className="tracking-widest text-gray-500 capitalize">
+        {col?.name}
+        {`(${tasks?.length})`}
+      </h2>
       {tasks?.map((task, idx) => (
         <Task
           key={idx}

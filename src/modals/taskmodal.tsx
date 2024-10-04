@@ -59,18 +59,9 @@ export default function AddtaskModal() {
     });
   }
 
-  // function validation(e: React.ChangeEvent<HTMLInputElement>) {
-  //   const inputvalue = e.target.value;
-  //   if (inputvalue.length > 0) {
-  //     setisvalid(true);
-  //   } else {
-  //     setisvalid(false);
-  //   }
-  // }
-
   function submitHandler() {
     dispatch(addTask({ selectedColumn, desc, taskName, subtasks }));
-    // setOpen(false);
+    setOpen(false);
   }
 
   return (
@@ -93,9 +84,9 @@ export default function AddtaskModal() {
         <Sheet
           variant="outlined"
           sx={{
-            maxWidth:450,
+            maxWidth: 450,
             width: 500,
-            marginInline:5,
+            marginInline: 5,
             borderRadius: "md",
             p: 3,
             border: "none",

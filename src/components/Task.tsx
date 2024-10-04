@@ -2,8 +2,6 @@ import * as React from "react";
 import Modal from "@mui/joy/Modal";
 import Sheet from "@mui/joy/Sheet";
 import { Subtask } from "./Subtask";
-import { Select } from "@mui/joy";
-import { Option } from "@mui/joy";
 import { Box } from "@mui/material";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
