@@ -1,13 +1,9 @@
 import { Column } from "./Column";
 import SideBar from "./SideBar";
-import AddtaskModal from "../modals/taskmodal";
 import AddEditBoard from "../modals/AddEditBoard";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
-import { toggleTheme } from "../redux/themSlice";
-import LightModeIcon from "@mui/icons-material/LightMode";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
-import Options from "./options";
+import NavBar from "./navBar";
 
 type BoardType = {
   name?: string;
@@ -17,32 +13,23 @@ export function Board({ name }: BoardType) {
   const boardList = useSelector((state: RootState) => state.boards);
   const theme = useSelector((state: RootState) => state.theme);
   const columns = boardList.find((board) => board.name == name)?.columns;
-  const dispatch = useDispatch();
 
   return (
     <div
-      className={theme == "dark" ? "h-full bg-gray-900" : "h-full bg-sky-50"}
+      className={
+        theme == "dark" ? "board h-auto  bg-gray-900" : "board   bg-sky-50"
+      }
     >
-      <div
-        className={
-          theme == "dark"
-            ? "bg-gray-800 text-white p-5 flex items-center"
-            : "bg-white p-5 flex items-center"
-        }
-      >
-        <h1 className="text-2xl capitalize font-bold tracking-tighter">task manager app</h1>
-        <h1 className="mr-auto capitalize text-xl font-bold ml-10">{name}</h1>
-        <div className="flex">
-          <button onClick={() => dispatch(toggleTheme())} className="px-2 mr-3 ">{theme == 'dark' ? <DarkModeIcon />:<LightModeIcon/>}</button>
-          <AddtaskModal />
-          <Options name={'board'}/>
-        </div>
-      </div>
-      <div className="flex h-full">
-        <div className="h-full">
-          <SideBar />
-        </div>
-        <div className="flex gap-3 h-5/6 p-3 overflow-auto">
+      <NavBar name={name} />
+      <div className="flex lg:h-screen h-auto">
+        <SideBar />
+        <div
+          className={
+            theme == "dark"
+              ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 p-3 bg-gray-900 w-full"
+              : "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 p-3 bg-blue-50 w-full"
+          }
+        >
           {columns?.length
             ? columns.map((_col, idx) => {
                 return <Column key={idx} colIndex={idx} />;

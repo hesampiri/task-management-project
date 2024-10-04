@@ -13,8 +13,8 @@ export default function SideBar() {
     <div
       className={
         theme == "dark"
-          ? "min-w-[250px] bg-gray-800 text-white h-full px-4"
-          : "min-w-[250px] bg-white h-full px-4"
+          ? "min-w-[250px] bg-gray-800 text-white px-4 hidden md:flex flex-col"
+          : "min-w-[250px] bg-white px-4 hidden md:flex flex-col h-screen"
       }
     >
       <h1 className="tracking-widest py-2">All Borads</h1>

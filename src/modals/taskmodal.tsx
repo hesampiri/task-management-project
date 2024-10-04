@@ -6,13 +6,15 @@ import { FormControl, Input } from "@mui/joy";
 import { Textarea } from "@mui/joy";
 import { Select } from "@mui/joy";
 import { Option } from "@mui/joy";
-import { useState} from "react";
+import { useState } from "react";
 import ClearIcon from "@mui/icons-material/Clear";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import { addTask } from "../redux/boardsSlice";
+import { useMediaQuery } from "react-responsive";
 
 export default function AddtaskModal() {
+  const isBigScreen = useMediaQuery({ query: "(min-width: 768px)" });
   const [open, setOpen] = React.useState<boolean>(false);
   const [subtasks, setsubtasks] = useState([
     { name: "", isCompleted: false, id: 0 },
@@ -31,7 +33,9 @@ export default function AddtaskModal() {
     setsubtasks(updatedList);
   }
 
-  function taskNameHandler(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+  function taskNameHandler(
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) {
     settaskName(e.target.value);
   }
 
@@ -65,8 +69,8 @@ export default function AddtaskModal() {
   // }
 
   function submitHandler() {
-      dispatch(addTask({ selectedColumn, desc, taskName, subtasks }));
-      // setOpen(false);
+    dispatch(addTask({ selectedColumn, desc, taskName, subtasks }));
+    // setOpen(false);
   }
 
   return (
@@ -74,11 +78,10 @@ export default function AddtaskModal() {
       <Button
         variant="solid"
         color="neutral"
-        sx={{ marginLeft: "auto" }}
         className="hover:!bg-sky-100 hover:!text-sky-600 !bg-sky-600 !text-white"
         onClick={() => setOpen(true)}
       >
-        + Add New Task
+        {isBigScreen ? "+ add new task" : "+"}
       </Button>
       <Modal
         aria-labelledby="modal-title"
@@ -90,7 +93,9 @@ export default function AddtaskModal() {
         <Sheet
           variant="outlined"
           sx={{
-            minWidth: 500,
+            maxWidth:450,
+            width: 500,
+            marginInline:5,
             borderRadius: "md",
             p: 3,
             border: "none",
@@ -99,58 +104,54 @@ export default function AddtaskModal() {
           className={theme == "dark" ? "!bg-gray-800 !text-white" : "bg-white"}
         >
           <FormControl>
-          <h1>Add new task</h1>
-          <label htmlFor="task title">Task Name</label>
-          <Input
-            autoFocus
-            required
-            onChange={(e) => taskNameHandler(e)}
-          />
-          <label htmlFor="">Desciption</label>
-          <Textarea sx={{ height: 100 }} onChange={(e) => descHandler(e)} />
-          <label htmlFor="">Subtasks</label>
-          {subtasks.map((sub) => (
-            <div className="flex" key={sub.id}>
-              <Input
-                sx={{ flexGrow: 1, marginTop: 1 }}
-                value={sub.name}
-                onChange={(e) => subchangeHandler(sub.id, e.target.value)}
-              />
-              <button className="p-1" onClick={() => deleteSub(sub.id)}>
-                <ClearIcon sx={{ color: "gray" }} />
-              </button>
-            </div>
-          ))}
-          <Button
-            sx={{ width: "100%", marginBlock: 2 }}
-            onClick={() => {
-              setsubtasks((state) => [
-                ...state,
-                { name: "", isCompleted: false, id: subtasks.length },
-              ]);
-            }}
-          >
-            + add new subtask
-          </Button>
-          <label htmlFor="current state">Current State</label>
-          <Select
-            id={"myselect"}
-            onChange={selectHandler}
-            value={selectedColumn}
-          >
-            {columns?.map((col, idx) => (
-              <Option value={col.name} key={idx}>
-                {col.name}
-              </Option>
+            <h1>Add new task</h1>
+            <label htmlFor="task title">Task Name</label>
+            <Input autoFocus required onChange={(e) => taskNameHandler(e)} />
+            <label htmlFor="">Desciption</label>
+            <Textarea sx={{ height: 100 }} onChange={(e) => descHandler(e)} />
+            <label htmlFor="">Subtasks</label>
+            {subtasks.map((sub) => (
+              <div className="flex" key={sub.id}>
+                <Input
+                  sx={{ flexGrow: 1, marginTop: 1 }}
+                  value={sub.name}
+                  onChange={(e) => subchangeHandler(sub.id, e.target.value)}
+                />
+                <button className="p-1" onClick={() => deleteSub(sub.id)}>
+                  <ClearIcon sx={{ color: "gray" }} />
+                </button>
+              </div>
             ))}
-          </Select>
-          <Button
-            sx={{ width: "100%", marginBlock: 2 }}
-            onClick={submitHandler}
-            type="submit"
-          >
-            Create Task
-          </Button>
+            <Button
+              sx={{ width: "100%", marginBlock: 2 }}
+              onClick={() => {
+                setsubtasks((state) => [
+                  ...state,
+                  { name: "", isCompleted: false, id: subtasks.length },
+                ]);
+              }}
+            >
+              + add new subtask
+            </Button>
+            <label htmlFor="current state">Current State</label>
+            <Select
+              id={"myselect"}
+              onChange={selectHandler}
+              value={selectedColumn}
+            >
+              {columns?.map((col, idx) => (
+                <Option value={col.name} key={idx}>
+                  {col.name}
+                </Option>
+              ))}
+            </Select>
+            <Button
+              sx={{ width: "100%", marginBlock: 2 }}
+              onClick={submitHandler}
+              type="submit"
+            >
+              Create Task
+            </Button>
           </FormControl>
         </Sheet>
       </Modal>

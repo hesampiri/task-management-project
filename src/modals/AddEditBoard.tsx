@@ -33,7 +33,7 @@ type propType = {
   type: string;
 };
 
-export default function AddEditBoard({ type }: propType) {
+export default function   AddEditBoard({ type }: propType) {
   const [open, setOpen] = React.useState<boolean>(false);
   const [boardInput, setboardInput] = useState<string | undefined>("");
   const [themeclass, setthemeclass] = useState("bg-sky-100");
@@ -101,7 +101,7 @@ export default function AddEditBoard({ type }: propType) {
     <React.Fragment>
       {type == "edit" ? (
         <div
-          className={`${themeclass} hover:shadow-md rounded flex justify-center items-center min-w-[300px] cursor-pointer`}
+          className={`${themeclass} hover:shadow-md rounded flex justify-center items-center cursor-pointer col-span-1 h-[100px] sm:h-full mx-3 `}
           onClick={() => setOpen(true)}
         >
           <p className="text-xl font-semibold text-gray-500">+ New Column</p>
@@ -124,7 +124,8 @@ export default function AddEditBoard({ type }: propType) {
         <Sheet
           variant="outlined"
           sx={{
-            minWidth: 500,
+            maxWidth: 400,
+            marginInline:5,
             borderRadius: "md",
             p: 3,
             boxShadow: "lg",
@@ -142,7 +143,7 @@ export default function AddEditBoard({ type }: propType) {
             onChange={(e) => setboardInput(e.target.value)}
             autoFocus
             required
-            />
+          />
           <label htmlFor="">Borad Columns</label>
           {tempColumns?.map((col, idx) => {
             return (
