@@ -17,7 +17,7 @@ export default function SideBar() {
           : "min-w-[250px] bg-white px-4 hidden md:flex flex-col h-screen"
       }
     >
-      <h1 className="tracking-widest py-2">All Borads</h1>
+      <h1 className="tracking-wider py-2 text-sm ">All Borads</h1>
       {boardsList.map((board, idx) => (
         <div
           className={`p-3 flex justify-center align-center hover:bg-sky-100 hover:!text-sky-600 text-gray-500 capitalize rounded cursor-pointer my-2     ${
