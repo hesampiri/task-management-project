@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Board } from "./components/Board";
 import { RootState } from "./redux/store";
-import { NewBoardModal } from "./modals/newBoardModal";
 import { useEffect } from "react";
 import { setBoardActive } from "./redux/boardsSlice";
+import AddEditBoard from "./modals/AddEditBoard";
 function App() {
   const boardsList = useSelector((state: RootState) => state.boards);
   const board = boardsList.find((board) => board.isActive);
@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div className="app">
-      {boardsList.length == 0 ? <NewBoardModal /> : null}
+      {boardsList.length == 0 ? <AddEditBoard type={""} /> : null}
       {boardsList.map((board, idx) => {
         if (board.isActive === true) {
           return <Board name={board.name} key={idx} />;

@@ -5,7 +5,7 @@ import AddEditBoard from "../modals/AddEditBoard";
 import { setBoardActive } from "../redux/boardsSlice";
 import { RootState } from "../redux/store";
 import { useDispatch, useSelector } from "react-redux";
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 const style = {
   position: "absolute",
