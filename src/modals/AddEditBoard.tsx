@@ -108,10 +108,10 @@ export default function AddEditBoard({ type }: propType) {
         </div>
       ) : (
         <div
-          className="flex justify-center items-center cursor-pointer p-3 rounded text-sky-600  h-screen "
+          className="flex justify-center items-center cursor-pointer p-3 rounded text-sky-600 m-4"
           onClick={() => setOpen(true)}
         >
-          <h1 className="p-5 bg-blue-50 rounded-lg">+Create New Board</h1>
+          <h1>+Create New Board</h1>
         </div>
       )}
       <Modal

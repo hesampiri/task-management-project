@@ -7,7 +7,7 @@ import { Option } from "@mui/joy";
 import { Box } from "@mui/material";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
-import Options from './options'
+import Options from "./options";
 
 type Subtask = {
   title: string;
@@ -59,14 +59,19 @@ export default function Task({ name, subtasks, colIndex }: taskProp) {
             p: 3,
             boxShadow: "lg",
             outline: "none",
-            border:'none'
+            border: "none",
           }}
-          className={theme == 'dark' ? '!bg-gray-800 !text-white':'bg-white'}>
+          className={theme == "dark" ? "!bg-gray-800 !text-white" : "bg-white"}
+        >
           <Box sx={{ borderRadius: 5 }}>
             <form action="">
               <div className="flex items-center justify-between">
                 <h1 className="capitalize text-md font-bold">{name}</h1>
-                <Options name="task" colIndex={colIndex} taskTitle={task?.title}/>
+                <Options
+                  name="task"
+                  colIndex={colIndex}
+                  taskTitle={task?.title}
+                />
               </div>
               <div className="my-2">
                 <p className="text-gray-500">{task?.description}</p>
@@ -80,16 +85,6 @@ export default function Task({ name, subtasks, colIndex }: taskProp) {
                   />
                 ))}
               </div>
-              <label htmlFor="" className="py-2 tracking-widest text-sm">
-                current status
-              </label>
-              <Select>
-                {columns?.map((col, idx) => (
-                  <Option value={col.name} key={idx}>
-                    {col.name}
-                  </Option>
-                ))}
-              </Select>
             </form>
           </Box>
         </Sheet>
