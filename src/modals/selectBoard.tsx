@@ -13,6 +13,7 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 250,
+  height:250,
   bgcolor: "background.paper",
   outline: 0,
 };
@@ -41,8 +42,8 @@ export default function SelectBoard({ name }: { name?: string }) {
           <div
             className={
               theme == "dark"
-                ? " bg-gray-800 text-white  px-4 sm:flex flex-col w-full"
-                : " bg-white px-4 w-full sm:flex flex-col"
+                ? " bg-gray-800 text-white  px-4 sm:flex flex-col "
+                : " bg-white px-4  sm:flex flex-col"
             }
           >
             <h1 className="tracking-widest py-2">All Borads</h1>
