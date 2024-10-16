@@ -86,13 +86,12 @@ export default function AddtaskModal() {
           sx={{
             maxWidth: 450,
             width: 500,
-            marginInline: 5,
             borderRadius: "md",
             p: 3,
             border: "none",
             outline: "none",
           }}
-          className={theme == "dark" ? "!bg-gray-800 !text-white" : "bg-white"}
+          className={theme == "dark" ? "!bg-gray-800 !text-white mx-5" : "bg-white"}
         >
           <FormControl>
             <h1>Add new task</h1>

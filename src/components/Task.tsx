@@ -54,6 +54,7 @@ export default function Task({ name, subtasks, colIndex }: taskProp) {
           sx={{
             width: 500,
             borderRadius: "md",
+            marginInline:1,
             p: 3,
             boxShadow: "lg",
             outline: "none",
